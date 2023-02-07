@@ -1,33 +1,51 @@
 ---
 Language:        Cpp
+Standard: c++20
 # BasedOnStyle:  LLVM
 AccessModifierOffset: -2
 AlignAfterOpenBracket: Align
-AlignConsecutiveMacros: false
-AlignConsecutiveAssignments: false
-AlignConsecutiveDeclarations: false
+AlignArrayOfStructures: Right
+#          Left                              Right
+# struct test demo[] =               struct test demo[] =
+# {                                  {
+#     {56, 23,    "hello"},              {56,    23, "hello"},
+#     {-1, 93463, "world"},    vs        {-1, 93463, "world"},
+#     {7,  5,     "!!"   }               { 7,     5,    "!!"}
+# };                                 };
+#
+AlignConsecutiveAssignments: None
+AlignConsecutiveBitFields: None
+AlignConsecutiveDeclarations: None
+AlignConsecutiveMacros: None
 AlignEscapedNewlines: Right
-AlignOperands: AlignAfterOperator
 AlignTrailingComments: true
+AlignOperands: AlignAfterOperator
 AllowAllArgumentsOnNextLine: true
 AllowAllConstructorInitializersOnNextLine: true
 AllowAllParametersOfDeclarationOnNextLine: true
 AllowShortBlocksOnASingleLine: Empty
 AllowShortCaseLabelsOnASingleLine: false
+AllowShortEnumsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: Empty
-AllowShortLambdasOnASingleLine: All
 AllowShortIfStatementsOnASingleLine: Never
+AllowShortLambdasOnASingleLine: All
 AllowShortLoopsOnASingleLine: false
 AlwaysBreakAfterDefinitionReturnType: None
 AlwaysBreakAfterReturnType: None
 AlwaysBreakBeforeMultilineStrings: false
 AlwaysBreakTemplateDeclarations: Yes
+AttributeMacros: []
 BinPackArguments: true
 BinPackParameters: true
+BitFieldColonSpacing: Both
+# Both      unsigned bf : 2;
+# None      unsigned bf:2;
+# Before    unsigned bf :2;
+# After     unsigned bf: 2;
 BraceWrapping:
   AfterCaseLabel:  false
   AfterClass:      false
-  AfterControlStatement: "false"
+  AfterControlStatement: Never
   AfterEnum:       false
   AfterFunction:   false
   AfterNamespace:  false
@@ -37,35 +55,58 @@ BraceWrapping:
   AfterExternBlock: false
   BeforeCatch:     false
   BeforeElse:      false
+  BeforeLambdaBody: false
+  BeforeWhile:     false
   IndentBraces:    false
   SplitEmptyFunction: true
   SplitEmptyRecord: true
   SplitEmptyNamespace: true
+BreakAfterJavaFieldAnnotations: false
 BreakBeforeBinaryOperators: None
 BreakBeforeBraces: Attach
-BreakBeforeInheritanceComma: false
-BreakInheritanceList: BeforeColon
+BreakBeforeConceptDeclarations: Always # can be Allowed, depending on the content, line breaking rules and penalities.
+# BreakBeforeInheritanceComma: false  <--  deprecated
 BreakBeforeTernaryOperators: true
-BreakConstructorInitializersBeforeComma: false
 BreakConstructorInitializers: BeforeColon
-BreakAfterJavaFieldAnnotations: false
+BreakInheritanceList: BeforeColon
 BreakStringLiterals: true
+# BreakConstructorInitializersBeforeComma: false  <-- deprecated
 ColumnLimit:     120
 CommentPragmas:  '^ IWYU pragma:'
 CompactNamespaces: false
-ConstructorInitializerAllOnOneLineOrOnePerLine: false
+# ConstructorInitializerAllOnOneLineOrOnePerLine: false  <-- deprecated, see PackConstructorInitializers.
 ConstructorInitializerIndentWidth: 4
 ContinuationIndentWidth: 4
 Cpp11BracedListStyle: true
+DeriveLineEnding: false
 DerivePointerAlignment: false
 DisableFormat:   false
+EmptyLineAfterAccessModifier: Never # Never, Always, Leave
+EmptyLineBeforeAccessModifier: Always
+# Never, Always, Leave, LogicalBlock.
+# LogicalBlock: Add empty line only when access modifier starts a new logical block.
+#         Logical block is a group of one or more member fields or functions.
+# struct foo {
+# private:
+#   int i;
+#
+# protected:
+#   int j;
+#   /* comment */
+# public:
+#   foo() {}
+#
+# private:
+# protected:
+# };
 ExperimentalAutoDetectBinPacking: false
 FixNamespaceComments: true
 ForEachMacros:
   - foreach
   - Q_FOREACH
   - BOOST_FOREACH
-IncludeBlocks:   Preserve
+IfMacros: []
+IncludeBlocks:   Preserve # Maybe, Regroup is better??
 IncludeCategories:
   - Regex:           '^"(llvm|llvm-c|clang|clang-c)/'
     Priority:        2
@@ -74,54 +115,92 @@ IncludeCategories:
   - Regex:           '.*'
     Priority:        1
 IncludeIsMainRegex: '(Test)?$'
+IndentAccessModifiers: false # false means indent respecting the AccessModifierOffset.
+IndentCaseBlocks: false
 IndentCaseLabels: false
+IndentExternBlock: NoIndent
+IndentGotoLabels: false
 IndentPPDirectives: None
+IndentRequiresClause: false
 IndentWidth:     2
 IndentWrappedFunctionNames: false
+InsertBraces: false
+InsertTrailingCommas: None
+JavaImportGroups: []
 JavaScriptQuotes: Leave
 JavaScriptWrapImports: true
-KeepEmptyLinesAtTheStartOfBlocks: true
+KeepEmptyLinesAtTheStartOfBlocks: true # Why?
+LambdaBodyIndentation: Signature
 MacroBlockBegin: ''
 MacroBlockEnd:   ''
 MaxEmptyLinesToKeep: 1
 NamespaceIndentation: None
+NamespaceMacros: []
 ObjCBinPackProtocolList: Auto
 ObjCBlockIndentWidth: 2
+ObjCBreakBeforeNestedBlockParam: false
 ObjCSpaceAfterProperty: false
 ObjCSpaceBeforeProtocolList: true
+PackConstructorInitializers: CurrentLine
+# Never        Always put each constructor initializer on its own line.
+# BinPack      Bin-pack constructor initializers.
+# CurrentLine  Put all constructor initializers on the current line if they fit. Otherwise, put each one on its own line.
+# NextLine     Same as CurrentLine except that if all constructor initializers do not fit on the current line,
+#                      try to fit them on the next line.
+# NextLineOnly Put all constructor initializers on the next line if they fit. Otherwise, put each one on its own line.
 PenaltyBreakAssignment: 2
 PenaltyBreakBeforeFirstCallParameter: 19
 PenaltyBreakComment: 300
 PenaltyBreakFirstLessLess: 120
+PenaltyBreakOpenParenthesis: 19 # The penalty for breaking after (.
 PenaltyBreakString: 1000
 PenaltyBreakTemplateDeclaration: 10
 PenaltyExcessCharacter: 1000000
+# PenaltyIndentedWhitespace: IDK.
 PenaltyReturnTypeOnItsOwnLine: 60
 PointerAlignment: Left
+QualifierAlignment: Right # can be Custom based on QualifierOrder.
+# QualifierOrder: ['friend', 'constexpr', 'static', 'inline', 'type', 'const', 'volatile', 'restrict']
+ReferenceAlignment: Pointer
 ReflowComments:  true
-SortIncludes:    true
+RemoveBracesLLVM: false
+RequiresClausePosition: OwnLine # OwnLine, WithPreceding, WithFollowing or SingleLine
+SeparateDefinitionBlocks: Leave
+SortIncludes:    CaseInsensitive
+SortJavaStaticImport: After
 SortUsingDeclarations: true
 SpaceAfterCStyleCast: false
 SpaceAfterLogicalNot: false
 SpaceAfterTemplateKeyword: true
+SpaceAroundPointerQualifiers: Default
 SpaceBeforeAssignmentOperators: true
+SpaceBeforeCaseColon: false
 SpaceBeforeCpp11BracedList: false
 SpaceBeforeCtorInitializerColon: true
 SpaceBeforeInheritanceColon: true
 SpaceBeforeParens: ControlStatements
 SpaceBeforeRangeBasedForLoopColon: true
+SpaceBeforeSquareBrackets: false
+SpaceInEmptyBlock: false
 SpaceInEmptyParentheses: false
 SpacesBeforeTrailingComments: 1
 SpacesInAngles:  false
-SpacesInContainerLiterals: true
 SpacesInCStyleCastParentheses: false
+SpacesInConditionalStatement: false
+SpacesInContainerLiterals: true
+SpacesInLineCommentPrefix:
+  Minimum: 1
+  Maximum: 1
 SpacesInParentheses: false
 SpacesInSquareBrackets: false
-Standard: c++17
+StatementAttributeLikeMacros: ['emit']
 StatementMacros:
   - Q_UNUSED
   - QT_REQUIRE_VERSION
+TypenameMacros: []
 TabWidth:        4
+UseCRLF:         false
 UseTab:          Never
+WhitespaceSensitiveMacros: []
 ...
 
