@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+
 #include <stdexcept>
 
 static void throwing_func() {

@@ -1,6 +1,6 @@
 ---
-Language:        Cpp
-Standard:        Latest
+Language: Cpp
+Standard: Latest
 # BasedOnStyle:  LLVM
 AccessModifierOffset: -2
 AlignAfterOpenBracket: Align
@@ -31,21 +31,21 @@ BinPackArguments: true
 BinPackParameters: true
 BitFieldColonSpacing: Both
 BraceWrapping:
-  AfterCaseLabel:  false
-  AfterClass:      false
+  AfterCaseLabel: false
+  AfterClass: false
   AfterControlStatement: Never
-  AfterEnum:       false
-  AfterFunction:   false
-  AfterNamespace:  false
+  AfterEnum: false
+  AfterFunction: false
+  AfterNamespace: false
   AfterObjCDeclaration: false
-  AfterStruct:     false
-  AfterUnion:      false
+  AfterStruct: false
+  AfterUnion: false
   AfterExternBlock: false
-  BeforeCatch:     false
-  BeforeElse:      false
+  BeforeCatch: false
+  BeforeElse: false
   BeforeLambdaBody: false
-  BeforeWhile:     false
-  IndentBraces:    false
+  BeforeWhile: false
+  IndentBraces: false
   SplitEmptyFunction: true
   SplitEmptyRecord: true
   SplitEmptyNamespace: true
@@ -57,15 +57,15 @@ BreakBeforeTernaryOperators: true
 BreakConstructorInitializers: BeforeColon
 BreakInheritanceList: BeforeColon
 BreakStringLiterals: true
-ColumnLimit:     120
-CommentPragmas:  '^ IWYU pragma:'
+ColumnLimit: 120
+CommentPragmas: '^ IWYU pragma:'
 CompactNamespaces: false
 ConstructorInitializerIndentWidth: 4
 ContinuationIndentWidth: 4
 Cpp11BracedListStyle: true
 DeriveLineEnding: false
 DerivePointerAlignment: false
-DisableFormat:   false
+DisableFormat: false
 EmptyLineAfterAccessModifier: Never
 EmptyLineBeforeAccessModifier: Always
 ExperimentalAutoDetectBinPacking: false
@@ -97,7 +97,7 @@ IndentExternBlock: NoIndent
 IndentGotoLabels: false
 IndentPPDirectives: None
 IndentRequiresClause: false
-IndentWidth:     2
+IndentWidth: 2
 IndentWrappedFunctionNames: false
 InsertBraces: true
 InsertTrailingCommas: None
@@ -107,7 +107,7 @@ JavaScriptWrapImports: true
 KeepEmptyLinesAtTheStartOfBlocks: true # Why?
 LambdaBodyIndentation: Signature
 MacroBlockBegin: ''
-MacroBlockEnd:   ''
+MacroBlockEnd: ''
 MaxEmptyLinesToKeep: 1
 NamespaceIndentation: None
 NamespaceMacros: []
@@ -131,7 +131,7 @@ PointerAlignment: Left
 QualifierAlignment: Custom
 QualifierOrder: ['friend', 'inline', 'static', 'constexpr', 'const', 'volatile', 'restrict', 'type']
 ReferenceAlignment: Pointer
-ReflowComments:  true
+ReflowComments: true
 RemoveBracesLLVM: false
 RequiresClausePosition: OwnLine
 # RequiresExpressionIndentation: OuterScope  <-- Uncomment when clang-format 16
@@ -154,7 +154,7 @@ SpaceBeforeSquareBrackets: false
 SpaceInEmptyBlock: false
 SpaceInEmptyParentheses: false
 SpacesBeforeTrailingComments: 1
-SpacesInAngles:  false
+SpacesInAngles: false
 SpacesInCStyleCastParentheses: false
 SpacesInConditionalStatement: false
 SpacesInContainerLiterals: true
@@ -168,9 +168,8 @@ StatementMacros:
   - Q_UNUSED
   - QT_REQUIRE_VERSION
 TypenameMacros: []
-TabWidth:        4
-UseCRLF:         false
-UseTab:          Never
+TabWidth: 4
+UseCRLF: false
+UseTab: Never
 WhitespaceSensitiveMacros: []
 ...
-
