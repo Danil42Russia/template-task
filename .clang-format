@@ -1,6 +1,6 @@
 ---
 Language:        Cpp
-Standard: c++20
+Standard:        Latest
 # BasedOnStyle:  LLVM
 AccessModifierOffset: -2
 AlignAfterOpenBracket: Align
@@ -18,8 +18,8 @@ AlignConsecutiveBitFields: None
 AlignConsecutiveDeclarations: None
 AlignConsecutiveMacros: None
 AlignEscapedNewlines: Right
-AlignTrailingComments: true
 AlignOperands: AlignAfterOperator
+AlignTrailingComments: true
 AllowAllArgumentsOnNextLine: true
 AllowAllConstructorInitializersOnNextLine: true
 AllowAllParametersOfDeclarationOnNextLine: true
@@ -63,7 +63,7 @@ BraceWrapping:
   SplitEmptyNamespace: true
 BreakAfterJavaFieldAnnotations: false
 BreakBeforeBinaryOperators: None
-BreakBeforeBraces: Attach
+BreakBeforeBraces: Custom
 BreakBeforeConceptDeclarations: Always # can be Allowed, depending on the content, line breaking rules and penalities.
 # BreakBeforeInheritanceComma: false  <--  deprecated
 BreakBeforeTernaryOperators: true
@@ -165,8 +165,9 @@ ReferenceAlignment: Pointer
 ReflowComments:  true
 RemoveBracesLLVM: false
 RequiresClausePosition: OwnLine # OwnLine, WithPreceding, WithFollowing or SingleLine
-SeparateDefinitionBlocks: Leave
-SortIncludes:    CaseInsensitive
+# RequiresExpressionIndentation: OuterScope  <-- Uncomment when clang-format 16
+SeparateDefinitionBlocks: Always
+SortIncludes: CaseSensitive
 SortJavaStaticImport: After
 SortUsingDeclarations: true
 SpaceAfterCStyleCast: false
