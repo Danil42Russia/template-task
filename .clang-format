@@ -129,7 +129,8 @@ PenaltyExcessCharacter: 1000000
 PenaltyReturnTypeOnItsOwnLine: 60
 PointerAlignment: Left
 QualifierAlignment: Custom
-QualifierOrder: ['friend', 'inline', 'static', 'constexpr', 'const', 'volatile', 'restrict', 'type']
+# TODO add 'friend' when clang-format-16 is available
+QualifierOrder: ['inline', 'static', 'constexpr', 'const', 'volatile', 'restrict', 'type']
 ReferenceAlignment: Pointer
 ReflowComments: true
 RemoveBracesLLVM: false
