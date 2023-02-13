@@ -19,7 +19,7 @@ jobs:
     needs: formatting-check
     name: Tests in ${{ matrix.build_type }} with ${{ matrix.compilerSetter }}
     runs-on: ubuntu-22.04
-    container: 
+    container:
       image: ubuntu:22.04
       options: --privileged
     env:
